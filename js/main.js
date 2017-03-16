@@ -54,7 +54,7 @@ function loadStats(){
                 user.total_month = formatBytes(user.month.recv + user.month.sent, -1);
                 user.connected_fmt = '-';
 
-                if (user.date_connected) {
+                if (user.date_connected && user.connected) {
                     var d = new Date(user.date_connected * 1000);
                     user.connected_fmt = d.toISOString().slice(0, 10);
                 }
