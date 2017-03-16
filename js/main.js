@@ -49,10 +49,9 @@ function loadStats(){
 
             for(var i=0; i<vals.length; i++) {
                 var user = vals[i];
-                console.log(user);
-                user.total_day = formatBytes(user.day.recv + user.day.sent);
-                user.total_week = formatBytes(user.last7d.recv + user.last7d.sent);
-                user.total_month = formatBytes(user.month.recv + user.month.sent);
+                user.total_day = formatBytes(user.day.recv + user.day.sent, -1);
+                user.total_week = formatBytes(user.last7d.recv + user.last7d.sent, -1);
+                user.total_month = formatBytes(user.month.recv + user.month.sent, -1);
                 user.connected_fmt = '-';
 
                 if (user.date_connected) {
@@ -64,11 +63,11 @@ function loadStats(){
             var html = statsTemplate({users:vals});
             statsPlaceholder.html(html);
             statsWrapper.show();
-            setInterval(loadStats, 10000);
+            setTimeout(loadStats, 10000);
         },
         function(jqxhr, textStatus, error){
             statsWrapper.hide();
-            setInterval(loadStats, 30000);
+            setTimeout(loadStats, 30000);
         }
     );
 }
