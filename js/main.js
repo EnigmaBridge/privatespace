@@ -34,6 +34,13 @@ function formatBytes(bytes, decimals) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+function formatDate(d){
+    var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var date = d.getDate() + " " + month[d.getMonth()] + ", " + d.getFullYear();
+    var time = d.toLocaleTimeString().toLowerCase();
+    return date + " " + time;
+}
+
 /**
  * Load stats data, create templte.
  */
@@ -56,7 +63,7 @@ function loadStats(){
 
                 if (user.date_connected && user.connected) {
                     var d = new Date(user.date_connected * 1000);
-                    user.connected_fmt = d.toISOString().slice(0, 10);
+                    user.connected_fmt = formatDate(d);
                 }
             }
 
