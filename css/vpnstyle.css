@@ -97,4 +97,21 @@ button {
     padding: 0;
 }
 
+.status {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 3px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+}
+
+.statusOnline {
+    background-image: url(../images/status_online.png);
+}
+
+.statusOffline {
+    background-image: url(../images/status_offline.png);
+}
 

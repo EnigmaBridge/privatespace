@@ -60,10 +60,12 @@ function loadStats(){
                 user.total_week = formatBytes(user.last7d.recv + user.last7d.sent, -1);
                 user.total_month = formatBytes(user.month.recv + user.month.sent, -1);
                 user.connected_fmt = '-';
+                user.status_style = 'statusOffline';
 
                 if (user.date_connected && user.connected) {
                     var d = new Date(user.date_connected * 1000);
                     user.connected_fmt = formatDate(d);
+                    user.status_style = 'statusOnline';
                 }
             }
 

@@ -41,7 +41,7 @@
           <tbody>
               {{#users}}
               <tr>
-                  <td><a href="smb://{{local_ip}}">{{cname}}</a></td>
+                  <td><div class="status {{status_style}}"></div><a href="smb://{{local_ip}}">{{cname}}</a></td>
                   <td>{{local_ip}}</td>
                   <td>{{connected_fmt}}</td>
                   <td>{{total_day}}</td>
