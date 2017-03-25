@@ -34,6 +34,14 @@ function formatBytes(bytes, decimals) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+function formatBytesWrap(bytes){
+    if (bytes > 1000*1000*1000){
+        return formatBytes(bytes, 2);
+    }
+
+    return formatBytes(bytes, -1)
+}
+
 function formatDate(d){
     var month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var date = d.getDate() + " " + month[d.getMonth()] + ", " + d.getFullYear();
@@ -56,9 +64,9 @@ function loadStats(){
 
             for(var i=0; i<vals.length; i++) {
                 var user = vals[i];
-                user.total_day = formatBytes(user.day.recv + user.day.sent, -1);
-                user.total_week = formatBytes(user.last7d.recv + user.last7d.sent, -1);
-                user.total_month = formatBytes(user.month.recv + user.month.sent, -1);
+                user.total_day = formatBytesWrap(user.day.recv + user.day.sent);
+                user.total_week = formatBytesWrap(user.last7d.recv + user.last7d.sent);
+                user.total_month = formatBytesWrap(user.month.recv + user.month.sent);
                 user.connected_fmt = '-';
                 user.status_style = 'statusOffline';
 
